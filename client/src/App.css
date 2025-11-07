@@ -112,6 +112,11 @@
   text-decoration: none;
 }
 
+.card-link:hover{
+  color: #9c8f13;
+  transition: 0.2s ease;
+}
+
 /* Filter */
 .filter {
   margin: 30px auto 15px;
@@ -155,6 +160,11 @@
 .author-link {
   color:#FFE81F;
   text-decoration: underline;
+}
+
+.author-link:hover {
+  color: #9c8f13;
+  transition: 0.2s ease;
 }
 
 /* Contact */

@@ -11,25 +11,25 @@ export function Card({id_post, image, title, date}) {
   );
 }
 
-  export function CardList({posts, text}){
-    const list = posts
-      .filter(post => post.title.toLowerCase().includes(text.toLowerCase()))
-      .slice()
-      .sort((a, b) => a.title.localeCompare(b.title))
-      .map(post => (
-        <Card
-          key={post.id_post}
-          id_post={post.id_post}
-          title={post.title}
-          date={new Date(post.date).toLocaleDateString('es-MX')}
-          image={post.image}
-        />
-      )
-    );
+export function CardList({posts, text}){
+  const list = posts
+    .filter(post => post.title.toLowerCase().includes(text.toLowerCase()))
+    .slice()
+    .sort((a, b) => a.title.localeCompare(b.title))
+    .map(post => (
+      <Card
+        key={post.id_post}
+        id_post={post.id_post}
+        title={post.title}
+        date={new Date(post.date).toLocaleDateString('es-MX')}
+        image={post.image}
+      />
+    )
+  );
 
-    return(
-     <div>
-        {list.length > 0 ? list : <p>No se encontraron resultados.</p>}
-     </div>
-    );
-  }
+  return(
+    <div>
+      {list.length > 0 ? list : <p></p>}
+    </div>
+  );
+}
