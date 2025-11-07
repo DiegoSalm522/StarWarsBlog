@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 export default function Author() {
   const { id } = useParams();
   const [author, setAuthor] = useState(null);
+
   const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:8000';
 
   useEffect(() => {
@@ -11,9 +12,9 @@ export default function Author() {
       .then(res => res.json())
       .then(data => setAuthor(data))
       .catch(e => console.log(e));
-  }, [id]);
+  }, [id, API_URL]);
 
-  if (!author) return <p>Cargando...</p>;
+  if (!author) return;
 
   return (
     <div>

@@ -1,12 +1,12 @@
-require('dotenv').config();
-const express = require('express');
-const cors = require('cors');
+require("dotenv").config();
+const express = require("express");
+const cors = require("cors");
 
 const app = express();
 
 const allowedOrigins = [
-  'http://localhost:3000',
-  'https://star-wars-blog-ten.vercel.app/'
+  "http://localhost:3000",
+  "https://star-wars-blog-ten.vercel.app/"
 ];
 
 app.use(cors({
@@ -16,7 +16,7 @@ app.use(cors({
     if (allowedOrigins.indexOf(origin) !== -1) {
       callback(null, true);
     } else {
-      callback(new Error('Not allowed by CORS'));
+      callback(new Error("Not allowed by CORS"));
     }
   },
   credentials: true
@@ -25,11 +25,11 @@ app.use(cors({
 app.use(express.json());
 
 /* Conexión a la bd con Neon */
-const pgp = require('pg-promise')();
+const pgp = require("pg-promise")();
 const connectionString = process.env.DATABASE_URL;
 
 if (!connectionString) {
-  console.error('ERROR: DATABASE_URL no está definido');
+  console.error("ERROR: DATABASE_URL no está definido");
   process.exit(1);
 }
 
@@ -43,24 +43,24 @@ const db = pgp({
 // Test de conexión
 db.connect()
   .then(obj => {
-    console.log('Conectado a la base de datos');
+    console.log("Conectado a la base de datos");
     obj.done();
   })
   .catch(error => {
-    console.error('Error al conectar a la base de datos:', error);
+    console.error("Error al conectar a la base de datos:", error);
   });
 
 /* Endpoints */
-app.get('/post', (req, res) => {
-  db.any('SELECT * FROM post')
+app.get("/post", (req, res) => {
+  db.any("SELECT * FROM post")
     .then((data) => res.json(data))
     .catch((error) => {
-      console.log('ERROR: ', error);
-      res.status(500).json({ error: 'Error al obtener posts' });
+      console.log("ERROR: ", error);
+      res.status(500).json({ error: "Error al obtener posts" });
     })
 })
 
-app.get('/post/:id', (req, res) => {
+app.get("/post/:id", (req, res) => {
   const id = req.params.id;
   db.oneOrNone(`
     SELECT 
@@ -77,18 +77,18 @@ app.get('/post/:id', (req, res) => {
   `, [id])
     .then(data => res.json(data))
     .catch(error => {
-      console.log('ERROR:', error);
-      res.status(500).json({ error: 'Error al obtener el post' });
+      console.log("ERROR:", error);
+      res.status(500).json({ error: "Error al obtener el post" });
     });
 });
 
-app.get('/author/:id', (req, res) => { 
+app.get("/author/:id", (req, res) => { 
   const id = req.params.id; 
-  db.oneOrNone('SELECT * FROM author WHERE id_author = $1', [id]) 
+  db.oneOrNone("SELECT * FROM author WHERE id_author = $1", [id]) 
     .then(data => res.json(data)) 
     .catch(error => {
-      console.log('ERROR:', error);
-      res.status(500).json({ error: 'Error al obtener el autor' });
+      console.log("ERROR:", error);
+      res.status(500).json({ error: "Error al obtener el autor" });
     }); 
 });
 
