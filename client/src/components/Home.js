@@ -7,9 +7,9 @@ export default function Home() {
       <img src={coverImage} alt="Portada" className="cover-image" />
       <div className="overlay"></div>
       <div className="content-home">
-        <h1>Blog de Planetas de Star Wars</h1>
+        <h1>Star Wars Planets Blog</h1>
         <Link to="/blog/" className="go-to-blog-button">
-          Ir al Blog
+          Go to Blog
         </Link>
       </div>
     </section>

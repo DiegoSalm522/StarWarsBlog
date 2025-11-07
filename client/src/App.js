@@ -10,9 +10,9 @@ function App() {
   return (
     <div className="App">
       <nav className="navbar">
-        <NavLink to="/">Inicio</NavLink>
+        <NavLink to="/">Home</NavLink>
         <NavLink to="/blog">Blog</NavLink>
-        <NavLink to="/contact">Contacto</NavLink>
+        <NavLink to="/contact">Contact</NavLink>
       </nav>
 
       <Routes>

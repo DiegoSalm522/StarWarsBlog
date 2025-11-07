@@ -22,9 +22,9 @@ export default function Blog(){
 
   return(
     <div>
-      <h1>Planetas</h1>
+      <h1>Planets</h1>
       <div className="filter">
-        <p>Buscar por nombre:</p>
+        <p>Search by title:</p>
         <input type="text" value={filterText} onChange={handleChange}></input>
       </div>
       <CardList posts={data} text={filterText}></CardList>

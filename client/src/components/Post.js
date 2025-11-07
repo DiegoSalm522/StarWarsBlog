@@ -20,8 +20,8 @@ export default function Post() {
     <div>
       <h1>{post.title}</h1>
       <img src={require(`../images/planets/${post.image}.jpg`)} alt={post.title} className="img-post"/>
-      <p className="text-post">Publicado por: <Link className="author-link" to={`../author/${post.id_author}`}>{post.author_name}</Link></p>
-      <p className="text-post">Fecha de Publicación: {new Date(post.date).toLocaleDateString("es-MX")}</p>
+      <p className="text-post">Posted by: <Link className="author-link" to={`../author/${post.id_author}`}>{post.author_name}</Link></p>
+      <p className="text-post">Publication Date: {new Date(post.date).toLocaleDateString("en-US")}</p>
       <p className="text-post">{post.text}</p>
       <br></br>
     </div>
