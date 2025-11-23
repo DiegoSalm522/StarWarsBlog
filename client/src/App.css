@@ -90,8 +90,8 @@
 }
 
 .go-to-blog-button:hover {
-  background-color: #9c8f13;
-  transition: 0.2s ease;
+  scale: 105%;
+  transition: 0.3s ease;
 }
 
 /* Card */
